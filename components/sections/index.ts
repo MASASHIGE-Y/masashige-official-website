@@ -1,0 +1,11 @@
+export { AboutSection } from "./about-section";
+export { ActivitiesSection } from "./activities-section";
+export { CareerSection } from "./career-section";
+export { ContactSection } from "./contact-section";
+export { GallerySection } from "./gallery-section";
+export { HeroSection } from "./hero-section";
+export { LatestNoteSection } from "./latest-note-section";
+export { LatestYoutubeSection } from "./latest-youtube-section";
+export { ManifestoSection } from "./manifesto-section";
+export { QualificationsSection } from "./qualifications-section";
+export { SpeakingSection } from "./speaking-section";
