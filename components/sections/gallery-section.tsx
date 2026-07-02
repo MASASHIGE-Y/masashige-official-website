@@ -29,7 +29,7 @@ export function GallerySection({ locale }: GallerySectionProps) {
             >
               <Image
                 src={item.image}
-                alt={galleryContent.title}
+                alt={`${galleryContent.title} - ${galleryContent.caption}`}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 sizes="(min-width: 768px) 50vw, 100vw"
