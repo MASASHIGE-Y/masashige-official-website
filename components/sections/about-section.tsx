@@ -17,9 +17,9 @@ export function AboutSection({ locale }: AboutSectionProps) {
   return (
     <section id="about" className="section-padding bg-secondary/45">
       <div className="container grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-lg shadow-soft">
+        <div className="relative aspect-[4/5] overflow-hidden">
           <Image
-            src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1200&q=80"
+            src="/images/gallery1.JPG"
             alt={content.about.imageAlt}
             fill
             className="object-cover"

@@ -2,6 +2,7 @@ import {
   BookOpen,
   BriefcaseBusiness,
   Code2,
+  FileCode2,
   Github,
   GraduationCap,
   Handshake,
@@ -11,6 +12,15 @@ import {
   Twitter,
   Youtube
 } from "lucide-react";
+
+export const brand = {
+  name: "WAGAYA",
+  subLabel: "nyumba yangu",
+  kipepeoImage: "/images/kipepeo-red-earth.png",
+  homeImage: "/images/wagaya-kenya-home.png",
+  homeVideoUrl: "https://www.youtube.com/watch?v=OmK3UyVHSP8&t=40s",
+  workshopImage: "/images/gallery-speaking.JPG"
+};
 
 export const site = {
   name: "Masashige Yamamoto",
@@ -37,27 +47,81 @@ export const localizedContent = {
     },
     navItems: [
       { label: "Home", href: "#home" },
-      { label: "About", href: "#about" },
-      { label: "Career", href: "#career" },
-      { label: "Activities", href: "#activities" },
+      { label: "教育・国際協力", href: "/education" },
+      { label: "発信", href: "#publications" },
       { label: "Speaking", href: "#speaking" },
-      { label: "Latest", href: "#latest" },
-      { label: "Gallery", href: "#gallery" },
-      { label: "Contact", href: "#contact" }
+      { label: "野球", href: "/library/baseball" },
+      { label: "英語", href: "/library/english" },
+      { label: "Contact", href: "/speaking#contact" }
     ],
+    homeDigest: {
+      publications: "発信を読む・見る",
+      speaking: "講演・ワークショップ",
+      speakingDescription: "教育、国際協力、挑戦。現場での経験をお伝えします。",
+      speakingCta: "実績・ご依頼はこちら"
+    },
+    education: {
+      eyebrow: "EDUCATION / INTERNATIONAL COOPERATION",
+      title: "教育・国際協力",
+      lead: "教室での出会いも、ケニアでの2年間も。人と向き合う経験が、今の活動につながっています。",
+      speakingCta: "講演・ワークショップについて",
+      backLabel: "公式トップへ",
+      navItems: [
+        { label: "公式トップ", href: "/" },
+        { label: "プロフィール", href: "#about" },
+        { label: "これまでの歩み", href: "#career" },
+        { label: "活動", href: "#activities" },
+        { label: "写真", href: "#gallery" },
+        { label: "講演依頼", href: "/speaking" },
+        { label: "野球", href: "/library/baseball" },
+        { label: "英語", href: "/library/english" }
+      ]
+    },
+    publications: {
+      eyebrow: "Writing / Video / Technology",
+      title: "経験を、言葉に。学びを、次の誰かへ。",
+      description:
+        "現場で感じたこと、日々の学び、開発での試行錯誤を、それぞれの場所で発信しています。"
+    },
+    pathways: {
+      label: "活動と学びの入口",
+      items: {
+        education: {
+          title: "教育・国際協力",
+          credentials: ["元JICA海外協力隊・ケニア2年間", "元高校数学教員"],
+          description: "ケニアでの経験、教育、講演。人と向き合う活動を知る。",
+          imageAlt: "ケニアの教育現場での活動風景",
+          action: "活動を知る"
+        },
+        baseball: {
+          title: "野球を学ぶ",
+          credentials: ["NZでコーチング留学", "ケニアで野球普及に従事"],
+          description: "打つ、守る、投げる。磨きたい技術から参考動画を探す。",
+          imageAlt: "内野と外野を見渡せる野球場",
+          action: "野球ライブラリへ"
+        },
+        english: {
+          title: "英語を学ぶ",
+          credentials: ["IELTS Overall 7.0", "英語学習コーチング"],
+          description: "発音、リスニング、学習方法。今の自分に必要な学びへ。",
+          imageAlt: "ヘッドホンとノートパソコンを置いた学習用の机",
+          action: "英語ライブラリへ"
+        }
+      }
+    },
     hero: {
+      currentRole: "Webエンジニア",
       eyebrow: "Education / Africa / Technology",
-      lead:
-        "教室からケニアへ。教育とテクノロジーで、挑戦の入口をつくる。",
+      titleLines: ["一歩踏みだす", "小さな勇気"],
+      lead: "教室からケニアへ。教育とテクノロジーで、挑戦の入口をつくる。",
       badges: ["Former Math Teacher", "JICA Kenya", "Web Engineer"],
       primaryCta: "講演・相談をする",
       secondaryCta: "活動を見る",
-      imageAlt: "ケニアの教室で学ぶ生徒たち",
+      imageAlt: "ケニアで生徒たちと笑顔で写る山本雅茂",
       kipepeoLabel: "Kipepeo",
       kipepeoSubLabel: "Swahili for butterfly",
       kipepeoLocation: "Kenya / Japan",
-      kipepeoMessage:
-        "小さな羽ばたきが、未来のどこかで誰かを支える。"
+      kipepeoMessage: "小さな羽ばたきが、未来のどこかで誰かを支える。"
     },
     mission: {
       eyebrow: "Mission / Kipepeo",
@@ -79,7 +143,7 @@ export const localizedContent = {
       motto:
         "エンターテイナーであり続け、手の届く範囲の人たちにWell-beingを届ける。",
       summary:
-        "ニュージーランドでの留学経験、JICA海外協力隊としてケニアで過ごした経験、そして高校教員としてのキャリアを活かし、教育・国際協力・テクノロジーを横断して活動しています。",
+        "現在はソフトウェアエンジニアとして働いています。高校数学教員、JICA海外協力隊としてケニアで過ごした経験、ニュージーランド留学での学びを活かし、教育・国際協力・テクノロジーを横断して活動しています。",
       belief:
         "一羽の蝶（Kipepeo）のように、一人の小さな一歩がやがて大きな変化を生むと信じ、その想いを伝え、つなぎ、広げるために日々活動を続けています。",
       highlights: [
@@ -96,13 +160,19 @@ export const localizedContent = {
       eyebrow: "Career",
       title: "教室、海外、そして次の挑戦へ。",
       description:
-        "Google SitesのCV情報を、公式サイト向けに読みやすいタイムラインとして整理しています。",
+        "教育、国際協力、コーチング。人と関わり、学び続けてきた歩みです。",
       items: [
         {
-          period: "2025年2月〜現在",
+          period: "2026年9月〜現在",
+          title: "ソフトウェアエンジニアとして勤務",
+          description:
+            "高校教員を退職後、ソフトウェアエンジニアとして働き始める。"
+        },
+        {
+          period: "2025年2月〜2026年3月",
           title: "高校教員へ復職 / NPO・英語学習コーチング",
           description:
-            "北海道の高等学校に復職。同時にNPO法人にてウガンダ事業に携わり、英語学習コーチングも行う。"
+            "北海道の高等学校に復職。NPO法人でのウガンダ事業や英語学習コーチングにも携わる。2026年3月に高校教員を退職。"
         },
         {
           period: "2023年1月〜2025年1月",
@@ -180,6 +250,16 @@ export const localizedContent = {
           title: "エンジニア",
           description:
             "Web技術を使い、思いを形にするプロダクトと体験を設計・実装する。"
+        },
+        {
+          title: "Qiita",
+          description:
+            "開発で学んだことや試行錯誤を、技術記事として共有しています。"
+        },
+        {
+          title: "Knowledge Library",
+          description:
+            "野球技術と英語学習をテーマから探す、参考動画と学びのライブラリ。"
         }
       ]
     },
@@ -193,10 +273,17 @@ export const localizedContent = {
       designTitle: "対象に合わせて設計",
       fee: "1時間 5,000円〜10,000円（応相談）",
       audiences: ["中学生・高校生", "大学生", "保護者", "教員", "社会人"],
-      topics: ["国際協力", "キャリア", "教育", "挑戦", "ケニアでの生活", "ワークショップ"],
+      topics: [
+        "国際協力",
+        "キャリア",
+        "教育",
+        "挑戦",
+        "ケニアでの生活",
+        "ワークショップ"
+      ],
       recordsTitle: "講演実績",
       recordsDescription:
-        "代表的な実績のみ掲載しています。詳細は必要に応じて追加できます。",
+        "学校やJICA関連イベントでの講演・ワークショップから、一部をご紹介します。",
       cta: "申し込みフォームへ",
       records: [
         {
@@ -257,8 +344,7 @@ export const localizedContent = {
         },
         {
           title: "一歩踏み出す小さな勇気",
-          excerpt:
-            "Kipepeoという言葉に込めている想いと、発信を続ける理由。",
+          excerpt: "Kipepeoという言葉に込めている想いと、発信を続ける理由。",
           date: "Featured"
         }
       ]
@@ -321,22 +407,87 @@ export const localizedContent = {
     },
     navItems: [
       { label: "Home", href: "#home" },
-      { label: "About", href: "#about" },
-      { label: "Career", href: "#career" },
-      { label: "Activities", href: "#activities" },
+      { label: "Education & Cooperation", href: "/education" },
+      { label: "Publications", href: "#publications" },
       { label: "Speaking", href: "#speaking" },
-      { label: "Latest", href: "#latest" },
-      { label: "Gallery", href: "#gallery" },
-      { label: "Contact", href: "#contact" }
+      { label: "Baseball", href: "/library/baseball" },
+      { label: "English", href: "/library/english" },
+      { label: "Contact", href: "/speaking#contact" }
     ],
+    homeDigest: {
+      publications: "Writing & video",
+      speaking: "Talks & workshops",
+      speakingDescription:
+        "Sharing experiences in education, international cooperation, and taking on new challenges.",
+      speakingCta: "Past talks & inquiries"
+    },
+    education: {
+      eyebrow: "EDUCATION / INTERNATIONAL COOPERATION",
+      title: "Education & International Cooperation",
+      lead: "From classrooms in Japan to two years in Kenya, the people I have met continue to shape my work today.",
+      speakingCta: "Talks & workshops",
+      backLabel: "Back to the official homepage",
+      navItems: [
+        { label: "Home", href: "/" },
+        { label: "About", href: "#about" },
+        { label: "Career", href: "#career" },
+        { label: "Activities", href: "#activities" },
+        { label: "Gallery", href: "#gallery" },
+        { label: "Speaking", href: "/speaking" },
+        { label: "Baseball", href: "/library/baseball" },
+        { label: "English", href: "/library/english" }
+      ]
+    },
+    publications: {
+      eyebrow: "Writing / Video / Technology",
+      title: "Sharing experiences. Passing on what I learn.",
+      description:
+        "Reflections from the field, everyday learning, and lessons from software development, shared through writing and video."
+    },
+    pathways: {
+      label: "Explore my work and learning resources",
+      items: {
+        education: {
+          title: "Education & Cooperation",
+          credentials: [
+            "Former JICA volunteer · 2 years in Kenya",
+            "Former high school mathematics teacher"
+          ],
+          description: "Discover my work in Kenya, education, and speaking.",
+          imageAlt: "Education activities in Kenya",
+          action: "Explore my work"
+        },
+        baseball: {
+          title: "Learn Baseball",
+          credentials: [
+            "Studied sports coaching in New Zealand",
+            "Supported baseball activities in Kenya"
+          ],
+          description:
+            "Find reference videos by skill: hitting, fielding, and pitching. Resources in Japanese.",
+          imageAlt:
+            "A baseball stadium with a view of the infield and outfield",
+          action: "Explore baseball"
+        },
+        english: {
+          title: "Learn English",
+          credentials: ["IELTS Overall 7.0", "English learning coaching"],
+          description:
+            "Explore pronunciation, listening, and study methods. Resources in Japanese.",
+          imageAlt: "Headphones and a laptop on a desk for studying",
+          action: "Explore English learning"
+        }
+      }
+    },
     hero: {
+      currentRole: "Web Engineer",
       eyebrow: "Education / Africa / Technology",
-      lead:
-        "From classrooms to Kenya, I create entry points for people to take on new challenges through education and technology.",
+      titleLines: ["Small courage.", "One step forward."],
+      lead: "From classrooms to Kenya, I create entry points for people to take on new challenges through education and technology.",
       badges: ["Former Math Teacher", "JICA Kenya", "Web Engineer"],
       primaryCta: "Request a Talk",
       secondaryCta: "Explore Activities",
-      imageAlt: "Students learning in a classroom in Kenya",
+      imageAlt: "Masashige Yamamoto smiling with students in Kenya",
       kipepeoLabel: "Kipepeo",
       kipepeoSubLabel: "Swahili for butterfly",
       kipepeoLocation: "Kenya / Japan",
@@ -364,7 +515,7 @@ export const localizedContent = {
       motto:
         "I aim to keep being an entertainer and deliver well-being to the people within my reach.",
       summary:
-        "With experience studying in New Zealand, serving as a JICA volunteer in Kenya, and working as a high school teacher, I now work across education, international cooperation, and technology.",
+        "I currently work as a software engineer. Drawing on my experience as a high school mathematics teacher, a JICA volunteer in Kenya, and a student in New Zealand, I continue working across education, international cooperation, and technology.",
       belief:
         "Like a butterfly, Kipepeo, I believe one person’s small step can eventually create meaningful change. I continue sharing, connecting, and expanding that belief through my work.",
       highlights: [
@@ -384,10 +535,17 @@ export const localizedContent = {
         "A concise timeline of my path across education, international cooperation, coaching, and technology.",
       items: [
         {
-          period: "Feb 2025 - Present",
-          title: "Returned to high school teaching / NPO work / English coaching",
+          period: "Sep 2026 - Present",
+          title: "Working as a software engineer",
           description:
-            "Returned to a high school in Hokkaido while also supporting an Uganda-related NPO project and providing English learning coaching."
+            "Started working as a software engineer after leaving high school teaching."
+        },
+        {
+          period: "Feb 2025 - Mar 2026",
+          title:
+            "Returned to high school teaching / NPO work / English coaching",
+          description:
+            "Returned to high school teaching in Hokkaido and also supported an Uganda-related NPO project and English learning coaching. Left teaching in March 2026."
         },
         {
           period: "Jan 2023 - Jan 2025",
@@ -417,7 +575,8 @@ export const localizedContent = {
       items: [
         {
           title: "EIKEN Grade Pre-1",
-          description: "A foundation for learning, communicating, and connecting in English."
+          description:
+            "A foundation for learning, communicating, and connecting in English."
         },
         {
           title: "IELTS Overall 7.0",
@@ -466,6 +625,16 @@ export const localizedContent = {
           title: "Engineering",
           description:
             "Designing and building web experiences that turn ideas and missions into usable products."
+        },
+        {
+          title: "Qiita",
+          description:
+            "Sharing technical notes, lessons learned, and discoveries from building software."
+        },
+        {
+          title: "Knowledge Library",
+          description:
+            "Explore baseball and English learning resources by topic. Library content is currently in Japanese."
         }
       ]
     },
@@ -478,8 +647,21 @@ export const localizedContent = {
       since: "Speaking since 2023",
       designTitle: "Designed for each audience",
       fee: "JPY 5,000-10,000 per hour, negotiable",
-      audiences: ["Junior / Senior High", "University", "Parents", "Teachers", "Professionals"],
-      topics: ["International Cooperation", "Career", "Education", "Challenge", "Life in Kenya", "Workshops"],
+      audiences: [
+        "Junior / Senior High",
+        "University",
+        "Parents",
+        "Teachers",
+        "Professionals"
+      ],
+      topics: [
+        "International Cooperation",
+        "Career",
+        "Education",
+        "Challenge",
+        "Life in Kenya",
+        "Workshops"
+      ],
       recordsTitle: "Speaking Highlights",
       recordsDescription:
         "A selected list of representative talks and workshops.",
@@ -576,7 +758,8 @@ export const localizedContent = {
       intents: [
         {
           title: "Speaking Requests",
-          description: "Talks and workshops for schools, organizations, and community events."
+          description:
+            "Talks and workshops for schools, organizations, and community events."
         },
         {
           title: "Education / Cooperation",
@@ -601,16 +784,7 @@ export const localizedContent = {
   }
 } as const satisfies Record<Locale, Record<string, unknown>>;
 
-export const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Career", href: "#career" },
-  { label: "Activities", href: "#activities" },
-  { label: "Speaking", href: "#speaking" },
-  { label: "Latest", href: "#latest" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Contact", href: "#contact" }
-];
+export const navItems = localizedContent.ja.navItems;
 
 export const hero = {
   eyebrow: "Education / Africa / Technology",
@@ -651,7 +825,7 @@ export const bio = {
   motto:
     "エンターテイナーであり続け、手の届く範囲の人たちにWell-beingを届ける。",
   summary:
-    "ニュージーランドでの留学経験、JICA海外協力隊としてケニアで過ごした経験、そして高校教員としてのキャリアを活かし、教育・国際協力・テクノロジーを横断して活動しています。",
+    "現在はソフトウェアエンジニアとして働いています。高校数学教員、JICA海外協力隊としてケニアで過ごした経験、ニュージーランド留学での学びを活かし、教育・国際協力・テクノロジーを横断して活動しています。",
   belief:
     "一羽の蝶（Kipepeo）のように、一人の小さな一歩がやがて大きな変化を生むと信じ、その想いを伝え、つなぎ、広げるために日々活動を続けています。"
 };
@@ -694,6 +868,18 @@ export const activities = [
     description:
       "Web技術を使い、思いを形にするプロダクトと体験を設計・実装する。",
     icon: Code2
+  },
+  {
+    title: "Qiita",
+    description: "開発で学んだことや試行錯誤を、技術記事として共有しています。",
+    href: "https://qiita.com/Masashige-Y",
+    icon: FileCode2
+  },
+  {
+    title: "Knowledge Library",
+    description: "野球技術と英語学習の参考資料をテーマ別に整理。",
+    href: "/library",
+    icon: BookOpen
   }
 ];
 
@@ -748,10 +934,15 @@ export const speakingRecords = [
 
 export const careerItems = [
   {
-    period: "2025年2月〜現在",
+    period: "2026年9月〜現在",
+    title: "ソフトウェアエンジニアとして勤務",
+    description: "高校教員を退職後、ソフトウェアエンジニアとして働き始める。"
+  },
+  {
+    period: "2025年2月〜2026年3月",
     title: "高校教員へ復職 / NPO・英語学習コーチング",
     description:
-      "北海道の高等学校に復職。同時にNPO法人にてウガンダ事業に携わり、英語学習コーチングも行う。"
+      "北海道の高等学校に復職。NPO法人でのウガンダ事業や英語学習コーチングにも携わる。2026年3月に高校教員を退職。"
   },
   {
     period: "2023年1月〜2025年1月",
@@ -854,13 +1045,14 @@ export const youtubeVideos = [
 ];
 
 export const socials = [
+  { label: "Qiita", href: "https://qiita.com/Masashige-Y", icon: FileCode2 },
   {
     label: "YouTube",
     href: "https://www.youtube.com/@shigekyalonziu",
     icon: Youtube
   },
   { label: "note", href: "https://note.com/shige_raha0209", icon: BookOpen },
-  { label: "X", href: "https://x.com/home", icon: Twitter },
+  { label: "X", href: "https://x.com/shige90035784", icon: Twitter },
   {
     label: "Instagram",
     href: "https://www.instagram.com/shigekyalonziu/?hl=ja",

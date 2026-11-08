@@ -33,6 +33,210 @@
   body {
     @apply bg-background text-foreground antialiased;
     text-rendering: optimizeLegibility;
+    font-family: var(--font-inter), var(--font-noto-sans-jp), sans-serif;
+    letter-spacing: 0;
+  }
+
+  section[id] {
+    scroll-margin-top: 88px;
+  }
+  ::selection {
+    background: #d7e9f5;
+    color: #153d53;
+  }
+}
+
+@layer components {
+  .container {
+    max-width: 1240px;
+    padding-inline: 24px;
+  }
+  .section-eyebrow {
+    margin-bottom: 20px;
+    color: hsl(var(--primary));
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+  }
+  .text-center .section-eyebrow {
+    justify-content: center;
+  }
+  .section-title {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+  .hero-section {
+    padding-top: 80px;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+  .hero-scene {
+    position: relative;
+    height: 460px;
+    background: #344a46;
+  }
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 30%);
+  }
+  .hero-copy {
+    max-width: 900px;
+  }
+  .hero-title {
+    color: white;
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1.45;
+    text-shadow: 0 2px 16px rgb(0 0 0 / 25%);
+    overflow-wrap: anywhere;
+  }
+  .hero-title span {
+    display: block;
+  }
+  .hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    font-size: 13px;
+    padding-block: 8px;
+    border-bottom: 1px solid rgb(255 255 255 / 70%);
+    transition: border-color 0.2s;
+  }
+  .hero-link:hover {
+    border-color: transparent;
+  }
+  .hero-link:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 5px;
+  }
+  .activity-entry {
+    height: 100%;
+    border-top: 1px solid hsl(var(--border));
+    padding: 28px 0;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
+  }
+  a:hover .activity-entry {
+    border-color: hsl(var(--primary));
+    transform: translateY(-3px);
+  }
+  .activity-number {
+    font-size: 12px;
+    color: hsl(var(--muted-foreground));
+    font-variant-numeric: tabular-nums;
+  }
+  .kipepeo-scene {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    min-height: 340px;
+    margin-block: 8px 28px;
+    margin-inline: calc(50% - 50vw);
+    padding: 48px max(24px, calc((100vw - 1160px) / 2));
+  }
+  .kipepeo-copy {
+    position: relative;
+    z-index: 1;
+    width: 46%;
+    max-width: 520px;
+  }
+  .kipepeo-landscape {
+    position: absolute;
+    inset: 0 0 0 43%;
+    overflow: hidden;
+    pointer-events: none;
+    mask-image:
+      linear-gradient(to right, transparent, black 20%),
+      linear-gradient(to bottom, transparent, black 12%, black 86%, transparent);
+    mask-composite: intersect;
+  }
+  .kipepeo-landscape-image {
+    object-fit: cover;
+    object-position: 65% 50%;
+  }
+  @media (max-width: 767px) {
+    .kipepeo-scene {
+      display: block;
+      padding: 36px 24px 0;
+    }
+    .kipepeo-copy {
+      width: 100%;
+      max-width: none;
+    }
+    .kipepeo-landscape {
+      position: relative;
+      inset: auto;
+      margin-inline: -24px;
+      height: 210px;
+      margin-top: 8px;
+      mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent
+      );
+      mask-composite: add;
+    }
+    .workshop-invitation {
+      min-height: 300px;
+    }
+    .workshop-invitation > img {
+      object-position: 37% 45%;
+    }
+  }
+  @media (min-width: 768px) {
+    .container {
+      padding-inline: 40px;
+    }
+    .section-title {
+      font-size: 38px;
+      line-height: 1.5;
+    }
+    .hero-scene {
+      height: min(560px, 65svh);
+      min-height: 440px;
+    }
+    .hero-title {
+      font-size: 64px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .hero-title {
+      font-size: 76px;
+    }
+  }
+  @media (max-width: 380px) {
+    .container {
+      padding-inline: 20px;
+    }
+    .hero-title {
+      font-size: 36px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

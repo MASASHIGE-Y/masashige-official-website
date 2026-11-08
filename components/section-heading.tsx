@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
@@ -16,17 +15,10 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div
-      className={cn(
-        "max-w-3xl",
-        align === "center" && "mx-auto text-center"
-      )}
+      className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}
     >
-      <Badge variant="outline" className="mb-5 border-primary/20 text-primary">
-        {eyebrow}
-      </Badge>
-      <h2 className="text-3xl font-semibold tracking-normal text-foreground md:text-5xl">
-        {title}
-      </h2>
+      <p className="section-eyebrow">{eyebrow}</p>
+      <h2 className="section-title">{title}</h2>
       {description ? (
         <p className="mt-5 text-base leading-8 text-muted-foreground md:text-lg">
           {description}

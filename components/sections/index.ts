@@ -7,5 +7,6 @@ export { HeroSection } from "./hero-section";
 export { LatestNoteSection } from "./latest-note-section";
 export { LatestYoutubeSection } from "./latest-youtube-section";
 export { ManifestoSection } from "./manifesto-section";
+export { PathwaysSection } from "./pathways-section";
 export { QualificationsSection } from "./qualifications-section";
 export { SpeakingSection } from "./speaking-section";
