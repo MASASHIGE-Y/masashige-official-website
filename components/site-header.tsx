@@ -54,17 +54,7 @@ export function SiteHeader({
             <span className="text-primary">.</span>
           </span>
         </Link>
-        <div className="hidden items-center gap-2 xl:flex">
-          <nav className="flex items-center gap-1">
-            {navItems.map((item) => (
-              <Button key={item.href} asChild variant="ghost" size="sm">
-                <Link href={item.href}>{item.label}</Link>
-              </Button>
-            ))}
-          </nav>
-          <LanguageToggle locale={locale} onLocaleChange={onLocaleChange} />
-        </div>
-        <div className="flex shrink-0 items-center gap-1 sm:gap-2 xl:hidden">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <LanguageToggle
             locale={locale}
             onLocaleChange={onLocaleChange}
@@ -83,7 +73,7 @@ export function SiteHeader({
                   : "Open menu"
             }
             aria-expanded={open}
-            aria-controls="mobile-navigation"
+            aria-controls="site-navigation"
             onClick={() => setOpen((current) => !current)}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -92,12 +82,12 @@ export function SiteHeader({
       </div>
       <div
         className={cn(
-          "grid border-t border-border/70 bg-background transition-all xl:hidden",
+          "grid border-t border-border/70 bg-background transition-all",
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         )}
       >
         <nav
-          id="mobile-navigation"
+          id="site-navigation"
           inert={!open}
           className="container max-h-[calc(100svh-80px)] overflow-y-auto"
         >
