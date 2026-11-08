@@ -5,7 +5,6 @@ import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle
@@ -67,18 +66,20 @@ export function SpeakingSection({ locale }: SpeakingSectionProps) {
             ))}
           </div>
         </div>
-        <Card>
-          <CardHeader>
-            <CardTitle>{content.speaking.recordsTitle}</CardTitle>
-            <CardDescription>
+        <div className="border-t border-primary/30 pt-7">
+          <div>
+            <h3 className="text-xl font-semibold">
+              {content.speaking.recordsTitle}
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               {content.speaking.recordsDescription}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
+            </p>
+          </div>
+          <div className="mt-6 space-y-4">
             {content.speaking.records.map((record) => (
               <div
                 key={`${record.title}-${record.date}`}
-                className="rounded-lg border border-border p-4"
+                className="border-b border-border pb-6"
               >
                 <p className="font-medium">{record.title}</p>
                 <div className="mt-2 flex flex-wrap gap-3 text-sm text-muted-foreground">
@@ -96,8 +97,8 @@ export function SpeakingSection({ locale }: SpeakingSectionProps) {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,4 @@
 import { MotionSection } from "@/components/motion";
-import { Badge } from "@/components/ui/badge";
 import { localizedContent, manifesto, type Locale } from "@/lib/content";
 
 import { fadeUp } from "./animation";
@@ -23,25 +22,21 @@ export function ManifestoSection({ locale }: ManifestoSectionProps) {
       <div className="container">
         <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <div>
-            <Badge
-              variant="outline"
-              className="mb-6 border-primary/20 text-primary"
-            >
-              {content.mission.eyebrow}
-            </Badge>
-            <h2 className="text-3xl font-semibold leading-tight tracking-normal md:text-5xl">
-              {content.mission.title}
-            </h2>
+            <p className="section-eyebrow">{content.mission.eyebrow}</p>
+            <h2 className="section-title">{content.mission.title}</h2>
             <p className="mt-6 text-base leading-8 text-muted-foreground md:text-lg">
               {content.mission.description}
             </p>
           </div>
-          <div className="rounded-lg border border-border bg-secondary/45 p-6 md:p-8">
+          <div className="border-t border-primary/25 pt-7 lg:mt-1">
             <p className="text-sm font-semibold text-primary">
               {manifesto.title}
             </p>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
               {content.mission.subtitle}
+            </p>
+            <p className="mt-2 text-xs leading-6 text-muted-foreground">
+              {manifesto.credit}
             </p>
             <div className="mt-8 space-y-5 border-l border-primary/20 pl-5 text-base leading-8 text-foreground">
               {content.mission.lines.map((paragraph) => (
