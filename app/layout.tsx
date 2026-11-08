@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 
 import "./globals.css";
+import { LocaleProvider } from "@/components/locale-provider";
 
 const siteUrl = "https://masashige-official-website.vercel.app";
 const siteTitle = "Masashige Yamamoto | 山本雅茂 Official Website";
@@ -135,7 +136,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <LocaleProvider>{children}</LocaleProvider>
       </body>
     </html>
   );

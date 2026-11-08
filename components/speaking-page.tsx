@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useLocale } from "@/components/locale-provider";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { SpeakingSection, ContactSection } from "@/components/sections";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { brand, localizedContent, type Locale } from "@/lib/content";
+import { brand, localizedContent } from "@/lib/content";
 
 export function SpeakingPage() {
-  const [locale, setLocale] = useState<Locale>("ja");
+  const { locale, setLocale } = useLocale();
   const content = localizedContent[locale];
   return (
     <div className="min-h-screen overflow-x-clip bg-background">

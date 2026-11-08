@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { useState } from "react";
+import { useLocale } from "@/components/locale-provider";
 import {
   AboutSection,
   ActivitiesSection,
@@ -13,10 +13,10 @@ import {
 } from "@/components/sections";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { localizedContent, type Locale } from "@/lib/content";
+import { localizedContent } from "@/lib/content";
 
 export function EducationPage() {
-  const [locale, setLocale] = useState<Locale>("ja");
+  const { locale, setLocale } = useLocale();
   const content = localizedContent[locale].education;
 
   return (
