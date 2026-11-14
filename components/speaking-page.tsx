@@ -1,17 +1,17 @@
 "use client";
 
-import { useLocale } from "@/components/locale-provider";
+import { useLocale, useSiteContent } from "@/components/locale-provider";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { SpeakingSection, ContactSection } from "@/components/sections";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { brand, localizedContent } from "@/lib/content";
+import { brand } from "@/lib/content";
 
 export function SpeakingPage() {
   const { locale, setLocale } = useLocale();
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
   return (
     <div className="min-h-screen overflow-x-clip bg-background">
       <SiteHeader locale={locale} onLocaleChange={setLocale} page="speaking" />

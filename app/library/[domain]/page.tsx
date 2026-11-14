@@ -7,16 +7,11 @@ import { EnglishStart } from "@/components/library/english-start";
 import { SourceList } from "@/components/library/source-list";
 import { domains } from "@/lib/library/catalog";
 import { libraryMetadata } from "@/lib/library/metadata";
-import {
-  getCategories,
-  getDomain,
-  getResources,
-  getSources,
-  getTopics
-} from "@/lib/library/queries";
+import { getCategories, getDomain, getSources } from "@/lib/library/queries";
+import { loadLibrary } from "@/lib/library/queries";
 
 type Props = { params: Promise<{ domain: string }> };
-export const dynamicParams = false;
+export const dynamicParams = true;
 export function generateStaticParams() {
   return domains.map((item) => ({ domain: item.id }));
 }
@@ -32,6 +27,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function DomainPage({ params }: Props) {
+  const { getResources, getTopics } = await loadLibrary();
   const { domain: slug } = await params;
   const domain = getDomain(slug);
   if (!domain) notFound();
@@ -56,6 +52,10 @@ export default async function DomainPage({ params }: Props) {
         categoryCount={items.length}
         topicCount={themes.length}
         resourceCount={resourceCount}
+        showAction={
+          !isEnglish ||
+          themes.some((topic) => topic.categoryId === "pronunciation")
+        }
       />
       <DomainSwitch active={domain.id} />
       {isEnglish && <EnglishStart />}

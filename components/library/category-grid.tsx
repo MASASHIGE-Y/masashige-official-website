@@ -14,7 +14,7 @@ import {
   BookOpen
 } from "lucide-react";
 import type { Category, DomainId } from "@/lib/library/types";
-import { getResources, getTopics } from "@/lib/library/queries";
+import { loadLibrary } from "@/lib/library/queries";
 
 const categoryIcons = {
   batting: MoveUpRight,
@@ -30,13 +30,14 @@ const categoryIcons = {
   methods: BookOpen
 };
 
-export function CategoryGrid({
+export async function CategoryGrid({
   categories,
   domainId
 }: {
   categories: Category[];
   domainId: DomainId;
 }) {
+  const { getResources, getTopics } = await loadLibrary();
   return (
     <div className="grid gap-x-7 gap-y-0 md:grid-cols-2 lg:grid-cols-3">
       {categories.map((category, index) => {

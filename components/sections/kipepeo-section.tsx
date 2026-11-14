@@ -1,8 +1,12 @@
+"use client";
+
+import { useSiteContent } from "@/components/locale-provider";
+
 import Image from "next/image";
-import { brand, localizedContent, type Locale } from "@/lib/content";
+import { brand, type Locale } from "@/lib/content";
 
 export function KipepeoSection({ locale }: { locale: Locale }) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
 
   return (
     <section

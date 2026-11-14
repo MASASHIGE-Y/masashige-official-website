@@ -1,5 +1,9 @@
+"use client";
+
+import { useSiteContent } from "@/components/locale-provider";
+
 import { MotionSection } from "@/components/motion";
-import { localizedContent, manifesto, type Locale } from "@/lib/content";
+import { manifesto, type Locale } from "@/lib/content";
 
 import { fadeUp } from "./animation";
 
@@ -8,7 +12,7 @@ type ManifestoSectionProps = {
 };
 
 export function ManifestoSection({ locale }: ManifestoSectionProps) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
 
   return (
     <MotionSection

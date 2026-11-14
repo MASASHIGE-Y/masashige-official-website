@@ -6,7 +6,8 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { brand, localizedContent, type Locale } from "@/lib/content";
+import { brand, type Locale } from "@/lib/content";
+import { useSiteContent } from "@/components/locale-provider";
 import { cn } from "@/lib/utils";
 
 type SiteHeaderProps = {
@@ -21,7 +22,7 @@ export function SiteHeader({
   page = "home"
 }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
   const navItems =
     page === "education"
       ? content.education.navItems

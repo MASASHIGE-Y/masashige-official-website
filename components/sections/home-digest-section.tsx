@@ -1,16 +1,16 @@
+"use client";
+
+import { useLocale, useSiteContent } from "@/components/locale-provider";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import {
-  activities,
-  brand,
-  localizedContent,
-  type Locale
-} from "@/lib/content";
+import { activities, brand, type Locale } from "@/lib/content";
 import { KipepeoSection } from "./kipepeo-section";
 
 export function HomeDigestSection({ locale }: { locale: Locale }) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
+  const { links } = useLocale();
   return (
     <div className="container">
       <KipepeoSection locale={locale} />
@@ -27,7 +27,11 @@ export function HomeDigestSection({ locale }: { locale: Locale }) {
             .map((activity) => (
               <a
                 key={activity.title}
-                href={activity.href}
+                href={
+                  activity.title === "YouTube"
+                    ? links.youtubeChannelUrl
+                    : activity.href
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-11 items-center gap-2 text-sm text-primary underline-offset-4 hover:underline"

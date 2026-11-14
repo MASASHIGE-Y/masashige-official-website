@@ -1,9 +1,13 @@
+"use client";
+
+import { useSiteContent } from "@/components/locale-provider";
+
 import Image from "next/image";
 
 import { MotionDiv } from "@/components/motion";
 import { SectionHeading } from "@/components/section-heading";
 import { Badge } from "@/components/ui/badge";
-import { localizedContent, type Locale } from "@/lib/content";
+import { type Locale } from "@/lib/content";
 
 import { fadeUp } from "./animation";
 
@@ -12,7 +16,7 @@ type AboutSectionProps = {
 };
 
 export function AboutSection({ locale }: AboutSectionProps) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
 
   return (
     <section id="about" className="section-padding bg-secondary/45">

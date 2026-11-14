@@ -1,11 +1,15 @@
+"use client";
+
+import { useSiteContent } from "@/components/locale-provider";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 
-import { brand, hero, localizedContent, type Locale } from "@/lib/content";
+import { brand, hero, type Locale } from "@/lib/content";
 
 export function HeroSection({ locale }: { locale: Locale }) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
 
   return (
     <section id="home" className="hero-section">

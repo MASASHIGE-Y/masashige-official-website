@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { ArrowRight, AudioLines, Headphones, NotebookPen } from "lucide-react";
+import { loadLibrary } from "@/lib/library/queries";
 
 const entries = [
   {
+    topicId: "english-sounds",
     label: "音を知る",
     title: "発音記号と音の入口",
     description: "AtsueigoとMiyuの公開動画から、音の学習を始める。",
@@ -10,6 +12,7 @@ const entries = [
     icon: AudioLines
   },
   {
+    topicId: "english-pronunciation-practice",
     label: "練習を選ぶ",
     title: "発音学習の進め方",
     description: "学習の視点を整理し、参考動画と練習記録へつなげる。",
@@ -17,6 +20,7 @@ const entries = [
     icon: NotebookPen
   },
   {
+    topicId: "english-listening-practice",
     label: "聞く力へ",
     title: "リスニングの学習方法",
     description: "タロサックの公開動画を参考先に、聞く練習を考える。",
@@ -25,7 +29,10 @@ const entries = [
   }
 ];
 
-export function EnglishStart() {
+export async function EnglishStart() {
+  const { topicPath } = await loadLibrary();
+  const visibleEntries = entries.filter((entry) => topicPath(entry.topicId));
+  if (visibleEntries.length === 0) return null;
   return (
     <section aria-labelledby="english-start" className="mb-12 mt-2">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
@@ -40,7 +47,7 @@ export function EnglishStart() {
         </p>
       </div>
       <div className="grid gap-0 border-y border-border md:grid-cols-3">
-        {entries.map((entry, index) => (
+        {visibleEntries.map((entry, index) => (
           <Link
             key={entry.href}
             href={entry.href}

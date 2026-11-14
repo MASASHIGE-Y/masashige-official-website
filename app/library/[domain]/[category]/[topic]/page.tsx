@@ -7,20 +7,13 @@ import { LibraryHeading } from "@/components/library/library-heading";
 import { ResourceCard } from "@/components/library/resource-card";
 import { libraryMetadata } from "@/lib/library/metadata";
 import { categories } from "@/lib/library/catalog";
-import {
-  getCategory,
-  getDomain,
-  getRelatedTopics,
-  getResources,
-  getTopic,
-  getTopics,
-  topicPath
-} from "@/lib/library/queries";
+import { getCategory, getDomain, getTopics } from "@/lib/library/queries";
+import { loadLibrary } from "@/lib/library/queries";
 
 type Props = {
   params: Promise<{ domain: string; category: string; topic: string }>;
 };
-export const dynamicParams = false;
+export const dynamicParams = true;
 export function generateStaticParams() {
   return categories.flatMap((category) =>
     getTopics(category.id).map((topic) => ({
@@ -31,6 +24,7 @@ export function generateStaticParams() {
   );
 }
 export async function generateMetadata({ params }: Props) {
+  const { getTopic, getResources } = await loadLibrary();
   const { domain, category: categorySlug, topic: topicSlug } = await params;
   const category = getCategory(domain, categorySlug);
   const topic = category && getTopic(category.id, topicSlug);
@@ -43,6 +37,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function TopicPage({ params }: Props) {
+  const { getTopic, getResources, getRelatedTopics, topicPath } =
+    await loadLibrary();
   const {
     domain: domainSlug,
     category: categorySlug,
