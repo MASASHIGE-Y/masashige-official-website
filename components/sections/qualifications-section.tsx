@@ -1,3 +1,7 @@
+"use client";
+
+import { useSiteContent } from "@/components/locale-provider";
+
 import { Award } from "lucide-react";
 
 import { SectionHeading } from "@/components/section-heading";
@@ -8,14 +12,14 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card";
-import { localizedContent, type Locale } from "@/lib/content";
+import { type Locale } from "@/lib/content";
 
 type QualificationsSectionProps = {
   locale: Locale;
 };
 
 export function QualificationsSection({ locale }: QualificationsSectionProps) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
 
   return (
     <section className="bg-background pb-20 md:pb-28">

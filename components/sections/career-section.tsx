@@ -1,12 +1,16 @@
+"use client";
+
+import { useSiteContent } from "@/components/locale-provider";
+
 import { SectionHeading } from "@/components/section-heading";
-import { localizedContent, type Locale } from "@/lib/content";
+import { type Locale } from "@/lib/content";
 
 type CareerSectionProps = {
   locale: Locale;
 };
 
 export function CareerSection({ locale }: CareerSectionProps) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
 
   return (
     <section id="career" className="section-padding bg-background">

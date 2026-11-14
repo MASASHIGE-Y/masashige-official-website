@@ -1,8 +1,12 @@
+"use client";
+
+import { useSiteContent } from "@/components/locale-provider";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { localizedContent, type Locale } from "@/lib/content";
+import { type Locale } from "@/lib/content";
 import { domainPresentation } from "@/lib/library/presentation";
 
 const pathways = [
@@ -30,7 +34,7 @@ const pathways = [
 ] as const;
 
 export function PathwaysSection({ locale }: { locale: Locale }) {
-  const content = localizedContent[locale].pathways;
+  const content = useSiteContent(locale).pathways;
 
   return (
     <section

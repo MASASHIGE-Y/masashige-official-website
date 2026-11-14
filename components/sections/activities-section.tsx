@@ -1,8 +1,12 @@
+"use client";
+
+import { useLocale, useSiteContent } from "@/components/locale-provider";
+
 import { MotionDiv } from "@/components/motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
-import { activities, localizedContent, type Locale } from "@/lib/content";
+import { activities, type Locale } from "@/lib/content";
 
 import { fadeUp } from "./animation";
 
@@ -15,11 +19,18 @@ export function ActivitiesSection({
   locale,
   mode = "all"
 }: ActivitiesSectionProps) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
+  const { links } = useLocale();
   const heading =
     mode === "publications" ? content.publications : content.activities;
   const entries = activities
-    .map((activity, index) => ({ activity, index }))
+    .map((activity, index) => ({
+      activity:
+        activity.title === "YouTube"
+          ? { ...activity, href: links.youtubeChannelUrl }
+          : activity,
+      index
+    }))
     .filter(({ activity }) =>
       mode === "publications"
         ? Boolean(activity.href && isExternalUrl(activity.href))

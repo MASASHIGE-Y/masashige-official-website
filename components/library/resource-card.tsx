@@ -1,15 +1,11 @@
 import Link from "next/link";
 import { ArrowUpRight, Play, FileText, Clock3 } from "lucide-react";
-import {
-  formatTimestamp,
-  getRelatedResources,
-  getSource,
-  topicPath,
-  youtubeUrl
-} from "@/lib/library/queries";
+import { formatTimestamp, getSource, youtubeUrl } from "@/lib/library/queries";
+import { loadLibrary } from "@/lib/library/queries";
 import type { Resource } from "@/lib/library/types";
 
-export function ResourceCard({ resource }: { resource: Resource }) {
+export async function ResourceCard({ resource }: { resource: Resource }) {
+  const { getRelatedResources, topicPath } = await loadLibrary();
   if (resource.kind === "article") {
     return (
       <article

@@ -1,3 +1,7 @@
+"use client";
+
+import { useLocale, useSiteContent } from "@/components/locale-provider";
+
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
 import {
@@ -7,20 +11,15 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card";
-import {
-  contactIntents,
-  localizedContent,
-  site,
-  socials,
-  type Locale
-} from "@/lib/content";
+import { contactIntents, site, socials, type Locale } from "@/lib/content";
 
 type ContactSectionProps = {
   locale: Locale;
 };
 
 export function ContactSection({ locale }: ContactSectionProps) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
+  const { links } = useLocale();
 
   return (
     <section id="contact" className="section-padding bg-background">
@@ -65,7 +64,11 @@ export function ContactSection({ locale }: ContactSectionProps) {
               return (
                 <Button key={social.label} asChild variant="outline" size="sm">
                   <a
-                    href={social.href}
+                    href={
+                      social.label === "YouTube"
+                        ? links.youtubeChannelUrl
+                        : social.href
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -80,9 +83,7 @@ export function ContactSection({ locale }: ContactSectionProps) {
         <Card className="shadow-soft">
           <CardHeader>
             <CardTitle>{content.contact.formTitle}</CardTitle>
-            <CardDescription>
-              {content.contact.formDescription}
-            </CardDescription>
+            <CardDescription>{content.contact.formDescription}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="overflow-hidden rounded-md border border-border bg-secondary/40">

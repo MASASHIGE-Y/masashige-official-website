@@ -17,7 +17,7 @@ export const brand = {
   name: "WAGAYA",
   subLabel: "nyumba yangu",
   kipepeoImage: "/images/kipepeo-red-earth.png",
-  homeImage: "/images/wagaya-kenya-home.png",
+  homeImage: "/images/wagaya-kenya-home-tank.png",
   homeVideoUrl: "https://www.youtube.com/watch?v=OmK3UyVHSP8&t=40s",
   workshopImage: "/images/gallery-speaking.JPG"
 };

@@ -1,3 +1,7 @@
+"use client";
+
+import { useSiteContent } from "@/components/locale-provider";
+
 import Link from "next/link";
 import { ArrowUpRight, NotebookPen } from "lucide-react";
 
@@ -10,14 +14,14 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card";
-import { localizedContent, noteArticles, type Locale } from "@/lib/content";
+import { noteArticles, type Locale } from "@/lib/content";
 
 type LatestNoteSectionProps = {
   locale: Locale;
 };
 
 export function LatestNoteSection({ locale }: LatestNoteSectionProps) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
 
   return (
     <section id="latest" className="section-padding bg-background">
@@ -44,33 +48,33 @@ export function LatestNoteSection({ locale }: LatestNoteSectionProps) {
             const articleContent = content.latestNote.articles[index];
 
             return (
-            <Card
-              key={article.title}
-              className="h-full transition-transform hover:-translate-y-1 hover:shadow-soft"
-            >
-              <CardHeader>
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary">
-                  <NotebookPen className="h-5 w-5" />
-                </div>
-                <CardDescription>{articleContent.date}</CardDescription>
-                <CardTitle>{articleContent.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-base leading-7 text-muted-foreground">
-                  {articleContent.excerpt}
-                </p>
-                <Button asChild className="mt-6" variant="link">
-                  <Link
-                    href={article.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {content.latestNote.readMore}
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+              <Card
+                key={article.title}
+                className="h-full transition-transform hover:-translate-y-1 hover:shadow-soft"
+              >
+                <CardHeader>
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary">
+                    <NotebookPen className="h-5 w-5" />
+                  </div>
+                  <CardDescription>{articleContent.date}</CardDescription>
+                  <CardTitle>{articleContent.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-base leading-7 text-muted-foreground">
+                    {articleContent.excerpt}
+                  </p>
+                  <Button asChild className="mt-6" variant="link">
+                    <Link
+                      href={article.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {content.latestNote.readMore}
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
             );
           })}
         </div>

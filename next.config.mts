@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: securityHeaders(process.env.NODE_ENV === "development")
+      },
+      {
+        source: "/studio/:path*",
+        headers: [
+          ...securityHeaders(process.env.NODE_ENV === "development", true),
+          { key: "X-Robots-Tag", value: "noindex, nofollow" }
+        ]
       }
     ];
   },

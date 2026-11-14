@@ -3,6 +3,9 @@ import { Inter, Noto_Sans_JP } from "next/font/google";
 
 import "./globals.css";
 import { LocaleProvider } from "@/components/locale-provider";
+import { getPublicContent } from "@/lib/sanity/public-content";
+
+export const revalidate = 60;
 
 const siteUrl = "https://masashige-official-website.vercel.app";
 const siteTitle = "Masashige Yamamoto | 山本雅茂 Official Website";
@@ -90,12 +93,7 @@ const jsonLd = {
       name: "Masashige Yamamoto",
       alternateName: ["山本雅茂", "Shige"],
       url: siteUrl,
-      jobTitle: [
-        "Educator",
-        "Former JICA Volunteer",
-        "Engineer",
-        "Speaker"
-      ],
+      jobTitle: ["Educator", "Former JICA Volunteer", "Engineer", "Speaker"],
       knowsAbout: [
         "Education",
         "International Cooperation",
@@ -124,11 +122,12 @@ const jsonLd = {
   ]
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { copy, links } = await getPublicContent();
   return (
     <html lang="ja">
       <body className={`${inter.variable} ${notoSansJp.variable} font-sans`}>
@@ -136,7 +135,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <LocaleProvider>{children}</LocaleProvider>
+        <LocaleProvider copy={copy} links={links}>
+          {children}
+        </LocaleProvider>
       </body>
     </html>
   );

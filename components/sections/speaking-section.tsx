@@ -1,3 +1,7 @@
+"use client";
+
+import { useSiteContent } from "@/components/locale-provider";
+
 import Link from "next/link";
 import { ArrowRight, MessageCircle, Users } from "lucide-react";
 
@@ -10,14 +14,14 @@ import {
   CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { localizedContent, type Locale } from "@/lib/content";
+import { type Locale } from "@/lib/content";
 
 type SpeakingSectionProps = {
   locale: Locale;
 };
 
 export function SpeakingSection({ locale }: SpeakingSectionProps) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
 
   return (
     <section id="speaking" className="section-padding bg-secondary/45">

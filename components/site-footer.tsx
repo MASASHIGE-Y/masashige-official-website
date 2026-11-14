@@ -1,4 +1,7 @@
-import { brand, localizedContent, socials, type Locale } from "@/lib/content";
+"use client";
+
+import { brand, socials, type Locale } from "@/lib/content";
+import { useLocale, useSiteContent } from "@/components/locale-provider";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -7,7 +10,8 @@ type SiteFooterProps = {
 };
 
 export function SiteFooter({ locale }: SiteFooterProps) {
-  const content = localizedContent[locale];
+  const content = useSiteContent(locale);
+  const { links } = useLocale();
 
   return (
     <footer className="border-t border-border bg-secondary/40 py-12">
@@ -24,7 +28,7 @@ export function SiteFooter({ locale }: SiteFooterProps) {
               </p>
             </div>
             <a
-              href={brand.homeVideoUrl}
+              href={links.homeVideoUrl}
               target="_blank"
               rel="noopener noreferrer"
               title={
@@ -67,7 +71,11 @@ export function SiteFooter({ locale }: SiteFooterProps) {
             return (
               <a
                 key={social.label}
-                href={social.href}
+                href={
+                  social.label === "YouTube"
+                    ? links.youtubeChannelUrl
+                    : social.href
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-background text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary"

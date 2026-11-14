@@ -8,12 +8,14 @@ export function DomainBanner({
   domainId,
   categoryCount,
   topicCount,
-  resourceCount
+  resourceCount,
+  showAction = true
 }: {
   domainId: DomainId;
   categoryCount: number;
   topicCount: number;
   resourceCount: number;
+  showAction?: boolean;
 }) {
   const presentation = domainPresentation[domainId];
   const isBaseball = domainId === "baseball";
@@ -43,17 +45,19 @@ export function DomainBanner({
             <p className="mt-3 max-w-lg text-sm leading-7 md:text-base">
               {presentation.lead}
             </p>
-            <Link
-              href={presentation.actionHref}
-              className="mt-6 inline-flex min-h-11 items-center gap-5 border-b border-current py-2 text-sm font-medium"
-            >
-              {presentation.actionLabel}
-              {isBaseball ? (
-                <ArrowDown className="h-4 w-4" aria-hidden="true" />
-              ) : (
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              )}
-            </Link>
+            {showAction && (
+              <Link
+                href={presentation.actionHref}
+                className="mt-6 inline-flex min-h-11 items-center gap-5 border-b border-current py-2 text-sm font-medium"
+              >
+                {presentation.actionLabel}
+                {isBaseball ? (
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                )}
+              </Link>
+            )}
           </div>
         </div>
       </section>

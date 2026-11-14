@@ -8,19 +8,23 @@ import { libraryMetadata } from "@/lib/library/metadata";
 import {
   getCategory,
   getDomain,
-  getResources,
   getSources,
   getTopics
 } from "@/lib/library/queries";
+import { loadLibrary } from "@/lib/library/queries";
 
 type Props = { params: Promise<{ domain: string; category: string }> };
-export const dynamicParams = false;
+export const dynamicParams = true;
 export function generateStaticParams() {
   return categories
     .filter((category) => getTopics(category.id).length > 0)
-    .map((category) => ({ domain: category.domainId, category: category.slug }));
+    .map((category) => ({
+      domain: category.domainId,
+      category: category.slug
+    }));
 }
 export async function generateMetadata({ params }: Props) {
+  const { getTopics } = await loadLibrary();
   const { domain, category: slug } = await params;
   const category = getCategory(domain, slug);
   if (!category || getTopics(category.id).length === 0) notFound();
@@ -32,6 +36,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function CategoryPage({ params }: Props) {
+  const { getTopics, getResources } = await loadLibrary();
   const { domain: domainSlug, category: categorySlug } = await params;
   const domain = getDomain(domainSlug);
   const category = getCategory(domainSlug, categorySlug);

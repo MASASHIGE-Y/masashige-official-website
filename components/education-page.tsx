@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { useLocale } from "@/components/locale-provider";
+import { useLocale, useSiteContent } from "@/components/locale-provider";
 import {
   AboutSection,
   ActivitiesSection,
@@ -13,11 +13,11 @@ import {
 } from "@/components/sections";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { localizedContent } from "@/lib/content";
 
 export function EducationPage() {
   const { locale, setLocale } = useLocale();
-  const content = localizedContent[locale].education;
+  const siteContent = useSiteContent(locale);
+  const content = siteContent.education;
 
   return (
     <div className="min-h-screen overflow-x-clip bg-background">
@@ -36,7 +36,7 @@ export function EducationPage() {
           <div className="relative isolate min-h-[430px] bg-emerald-950 text-white">
             <Image
               src="/images/gallery1.JPG"
-              alt={localizedContent[locale].pathways.items.education.imageAlt}
+              alt={siteContent.pathways.items.education.imageAlt}
               fill
               priority
               sizes="100vw"
